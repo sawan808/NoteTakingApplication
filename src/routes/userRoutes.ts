@@ -1,9 +1,10 @@
 import express from 'express';
 
 export const router = express.Router();
-import { getAllUsers, getSpecificUser, getAllNotes } from '../controllers/userController'
-router.get("/users", getAllUsers);
-router.get("/notes", getAllNotes);
-router.get("/users/:id", getSpecificUser)
+import { createUser, getAllUsers, loginUser } from '../controllers/userController'
+import { addNewNote, getSpecificNote, getAllNotes} from  '../controllers/noteController'
+router.get("/dashboard", getAllUsers);
+router.post("/login", loginUser)
+router.post("/register", createUser);
 
 
