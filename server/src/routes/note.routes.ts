@@ -1,7 +1,7 @@
-import express from 'express';
+import express from "express";
 
-import {addNewNote, getAllNotes, getSpecificNote} from '../controllers/noteController';
-import { get } from 'mongoose';
+import { addNewNote, getAllNotes, getSpecificNote } from "./note.controller";
+import { get } from "mongoose";
 
 export const noteRoutes = express.Router();
 

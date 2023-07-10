@@ -1,4 +1,4 @@
-import { UserModel } from "../repository/models/userModel";
+import { UserModel } from "../models/user.model";
 
 // const users = [
 //   {

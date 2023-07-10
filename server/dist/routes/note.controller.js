@@ -10,9 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSpecificNote = exports.addNewNote = exports.getAllNotes = void 0;
-const noteModel_1 = require("../repository/models/noteModel");
+const note_model_1 = require("../models/note.model");
 const getAllNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const notes = yield noteModel_1.NoteModel.find({});
+    const notes = yield note_model_1.NoteModel.find({});
     if (notes) {
         res.status(200).json(notes);
     }
@@ -24,7 +24,7 @@ const getAllNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getAllNotes = getAllNotes;
 const addNewNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id, content } = req.body;
-    const note = yield noteModel_1.NoteModel.create({ id, content });
+    const note = yield note_model_1.NoteModel.create({ id, content });
     if (note) {
         res.status(201).json(note);
     }
@@ -35,7 +35,7 @@ const addNewNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.addNewNote = addNewNote;
 const getSpecificNote = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.params.id;
-    const note = yield noteModel_1.NoteModel.findOne({ id });
+    const note = yield note_model_1.NoteModel.findOne({ id });
     if (note) {
         res.status(200).json(note);
     }

@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = exports.loginUser = exports.getAllUsers = void 0;
-const userModel_1 = require("../repository/models/userModel");
+const user_model_1 = require("../models/user.model");
 // const users = [
 //   {
 //     id: 1,
@@ -42,13 +42,13 @@ const userModel_1 = require("../repository/models/userModel");
 //   },
 // ];
 const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const users = yield userModel_1.UserModel.find({});
+    const users = yield user_model_1.UserModel.find({});
     res.status(200).json(users);
 });
 exports.getAllUsers = getAllUsers;
 const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
-    const user = yield userModel_1.UserModel.findOne({ email });
+    const user = yield user_model_1.UserModel.findOne({ email });
     if (!user) {
         res.status(404).json({ message: "User does not exist" });
     }
@@ -61,7 +61,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.loginUser = loginUser;
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id, firstName, lastName, email, password } = req.body;
-    const user = yield userModel_1.UserModel.create({
+    const user = yield user_model_1.UserModel.create({
         id,
         firstName,
         lastName,

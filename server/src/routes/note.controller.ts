@@ -1,4 +1,4 @@
-import { NoteModel } from "../repository/models/noteModel";
+import { NoteModel } from "../models/note.model";
 
 export const getAllNotes = async (req: any, res: any) => {
   const notes = await NoteModel.find({});

@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.noteRoutes = void 0;
 const express_1 = __importDefault(require("express"));
-const noteController_1 = require("../controllers/noteController");
+const note_controller_1 = require("./note.controller");
 exports.noteRoutes = express_1.default.Router();
-exports.noteRoutes.post("/", noteController_1.addNewNote);
-exports.noteRoutes.get("/", noteController_1.getAllNotes);
-exports.noteRoutes.get("/:id", noteController_1.getSpecificNote);
+exports.noteRoutes.post("/", note_controller_1.addNewNote);
+exports.noteRoutes.get("/", note_controller_1.getAllNotes);
+exports.noteRoutes.get("/:id", note_controller_1.getSpecificNote);
