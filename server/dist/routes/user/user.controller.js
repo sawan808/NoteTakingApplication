@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createUser = exports.loginUser = exports.getAllUsers = void 0;
-const user_model_1 = require("../models/user.model");
+const user_model_1 = require("../../models/user.model");
 // const users = [
 //   {
 //     id: 1,

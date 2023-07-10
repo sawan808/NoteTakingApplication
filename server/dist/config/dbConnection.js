@@ -1,29 +1,34 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.connectDb = void 0;
+exports.connectDatabase = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
-const connectDb = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        console.log(`Connection String: ${process.env.CONNECTION_STRING}`);
+// export const connectDb = async () => {
+//   try {
+//     console.log(`Connection String: ${process.env.CONNECTION_STRING}`);
+//     const connectionString = process.env.CONNECTION_STRING || "";
+//     const connect = await mongoose.connect(connectionString);
+//     console.log(
+//       `Database connected successfully to ${connect.connection.host}`
+//     );
+//   } catch (error) {
+//     console.error("Failed to connect to database");
+//     process.exit(1);
+//   }
+// };
+const connectDatabase = () => {
+    return new Promise((resolve, reject) => {
         const connectionString = process.env.CONNECTION_STRING || "";
-        const connect = yield mongoose_1.default.connect(connectionString);
-        console.log(`Database connected successfully to ${connect.connection.host}`);
-    }
-    catch (error) {
-        console.error("Failed to connect to database");
-        process.exit(1);
-    }
-});
-exports.connectDb = connectDb;
+        mongoose_1.default.connect(connectionString).then((connect) => {
+            console.log(`Database connected successfully to ${connect.connection.host}`);
+            resolve(true);
+        }).catch((error) => {
+            console.error("Failed to connect to database");
+            reject(error);
+            process.exit(1);
+        });
+    });
+};
+exports.connectDatabase = connectDatabase;

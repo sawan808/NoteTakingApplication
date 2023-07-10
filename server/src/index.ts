@@ -1,14 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
-import { router as UserRoutes } from "./routes/user.routes";
-import { noteRoutes } from "./routes/note.routes";
+import { router as UserRoutes } from "./routes/user/user.routes";
+import { noteRoutes } from "./routes/note/note.routes";
+import cors from "cors";
+import morgan from "morgan";
 
 dotenv.config();
 
-import { connectDb } from "./config/dbConnection";
-
-connectDb();
+// import { connectDb } from "./config/dbConnection";
+import { connectDatabase } from "./config/dbConnection";
+// connectDb();
 
 const PORT = process.env.PORT || 5001;
 
@@ -18,6 +20,8 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "../", "src", "./views"));
 
 app.use(express.json());
+app.use(cors());
+app.use(morgan("combined"));
 
 app.get("/", (req, res) => {
   const current = new Date();
@@ -36,4 +40,9 @@ app.get("/", (req, res) => {
 app.use("/users", UserRoutes);
 app.use("/notes", noteRoutes);
 
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+async function startServer() {
+  await connectDatabase();
+  app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+}
+
+startServer();

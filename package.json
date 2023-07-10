@@ -1,0 +1,24 @@
+{
+  "name": "notetakingapp",
+  "version": "1.0.0",
+  "description": "Functional requirements: - User can login to account - User can save the notes - User can retrieve the notes - User can logout",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm run install-server && npm run install-client",
+    "watch": "npm start --prefix server & npm start --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Sawan Yadav",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/morgan": "^1.9.4"
+  }
+}

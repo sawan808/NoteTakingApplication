@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSpecificNote = exports.addNewNote = exports.getAllNotes = void 0;
-const note_model_1 = require("../models/note.model");
+const note_model_1 = require("../../models/note.model");
 const getAllNotes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const notes = yield note_model_1.NoteModel.find({});
     if (notes) {
